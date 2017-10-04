@@ -1,0 +1,26 @@
+server:
+  port: 9001
+
+zuul:
+  prefix: /api
+  routes:
+    bungalowAPI:
+      path: /bungalowAPI/**
+      serviceId: BUNGLOWAPI-MICROSERVICE
+    regionAPI:
+      path: /regionAPI/**
+      serviceId: REGIONAPI-MICROSERVICE
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8050/eureka/
+
+
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 10000
